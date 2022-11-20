@@ -18,29 +18,29 @@ for event in longpoll.listen():
     if event.type == VkEventType.MESSAGE_NEW and event.to_me:
         userText = str(event.text).lower()
         if event.from_user and userText in vars:
-            bot = random.choice(vars)
+            botText = random.choice(vars)
 
             vk.messages.send(user_id = event.user_id,
-                            message = bot,
+                            message = botText,
                             random_id = random.randint(1,100000))
             
             out = None
 
-            if bot == "ножницы":
+            if botText == "ножницы":
               if userText == "ножницы":
                   out = "Ничья"
               elif userText == "бумага":
                   out = "Ты проиграл"
               else:
                   out = "Ты выиграл"
-            elif bot == "бумага":
+            elif botText == "бумага":
                 if userText == "бумага":
                     out = "Ничья"
                 elif userText == "камень":
                     out = "Ты проиграл"
                 else:
                     out = "Ты выиграл"
-            elif bot == "камень":
+            elif botText == "камень":
                 if userText == "камень":
                     out = "Ничья"
                 elif userText == "ножницы":
